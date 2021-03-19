@@ -8,6 +8,11 @@ console.log(`client defined.`)
 console.log(`Emojis Loaded.`)
               client.login                          ( `dQw4w9WgXcQ`)
 
+fs.readFile(`score`, (err, score_buffer) => {
+    if (err) {
+      console.error(err)
+      return} console.log(`score: ${score_buffer}`)})
+
 //#region Start Bot
     client.once(`ready`, () => {
         console.log(`online.`)

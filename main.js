@@ -31,7 +31,7 @@ console.log(`Counting channel:   <#${count}> \nTesting channel:    <#${test}>`)
 
 
 client.on(`message`, message =>{
-    console.log(`Message recieved: ${message.content}`)
+    console.log(`Message recieved: \n${message.content}`)
     if ((message.channel.id == test) || (message.channel.id == count)){
         console.log(`channel: #${message.channel.name}. Reading score...`)
         fs.readFile(`score`, (err, score_buffer) => {

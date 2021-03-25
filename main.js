@@ -28,7 +28,7 @@ client.login(``)
 
 //#region Start Bot
 client.once(`ready`, () => {
-    console.log(`online.`)
+    console.log(`Logged in as ${client.user.tag}`)
     ////#region Presence
     client.user.setPresence({
         status: `online`, // Options: online, idle, dnd (do not disturb)

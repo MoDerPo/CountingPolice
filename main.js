@@ -119,6 +119,7 @@ client.on(`message`, message => {
                 //NaN
                 console.log(`${message.content} does not contain a number`)
                 message.react(emoji)
+                message.delete({timeout: 5000}, `Wrong user`)
             }
         })
         //outside

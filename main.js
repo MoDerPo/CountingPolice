@@ -13,7 +13,8 @@
 
     Contact me via discord: Moderpo #0172
 */
-console.log(`Counting Police by @Moderpo#0172 initiated`)
+const package_json = require('./package.json')
+console.log(`Counting Police ${package_json.version} by @Moderpo#0172 initiated`)
 const fs = require(`fs`),
     Discord = require(`discord.js`)
 console.log(`Discord.js and fs Library loaded`)

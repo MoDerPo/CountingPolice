@@ -21,6 +21,7 @@ console.log(`Discord.js and fs Library loaded`)
 const client = new Discord.Client()
 console.log(`client defined.`)
 const emoji = ``
+const user = new Discord.User(clientdata);
 /////add your emoji name and id above but keep in mind that throughout the code I use the const "emoji"!/////
 console.log(`Emojis Loaded.`)
 client.login(``)
@@ -28,7 +29,7 @@ client.login(``)
 
 //#region Start Bot
 client.once(`ready`, () => {
-    console.log(`online.`)
+    console.log(`Logged in as ${user.username}`)
     ////#region Presence
     client.user.setPresence({
         status: `online`, // Options: online, idle, dnd (do not disturb)

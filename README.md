@@ -2,7 +2,7 @@
 A discord bot that takes care of your Counting channel
 
 ## **Requirements:**
-* Node.js
+* Node.js (You can download it [here](https://nodejs.org/en/download/))
 
 ## **Instructions:**
 * Go to main.js and look at the comments with five slashes.

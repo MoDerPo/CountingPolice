@@ -32,14 +32,14 @@ client.login(jsondata['token'])
 client.once(`ready`, () => {
     console.log(`Logged in as ${client.user.tag}`)
     ////#region Presence
-    client.user.setPresence({
+/*    client.user.setPresence({
         status: jsondata['status']['status'], // Options: online, idle, dnd (do not disturb)
         game: {
             name: jsondata['status']['game']['name'], // what the bot is watching, playing, listening or streaming
             type: jsondata['status']['game']['type'] // Options: PLAYING, WATCHING, LISTENING, STREAMING,
         }
         //#endregion
-    })
+    })*/
 })
 //#endregion
 
@@ -104,7 +104,9 @@ client.on(`message`, message => {
                             message.delete({timeout: 1000}, `Wrong user`)
                         } else {console.log(`${id} is not equal to\n${message.author.id}`)
                         console.log(`The number ${num} is correct and by the correct user (<@${message.author.id}>). The last user was ${id}`)
-                        fs.writeFile(`score`, num.toString(), (err) => {
+						jsondata['score'] = num
+						jsondata['user'] = message.author.id
+                        fs.writeFile(`properties.json`, JSON.stringify(jsondata), (err) => {
                             if (err) throw err
                             console.log(`updated score.`)
                         })

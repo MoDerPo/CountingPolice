@@ -1,4 +1,5 @@
 import json
+from time import sleep()
 open('properties.json') as f:
 data = json.load(f)
 print("Here you can edit your bot's properties. To not change a propertie, leave it blank (just press ENTER)")
@@ -18,7 +19,12 @@ gamename = input("Enter what you wanna set as the bot's game name")
 if gamename != '':
 	data["status"]["game"]["name"] = gamename
 	json.dump(data, f)
-gametype = input("Enter what you wanna set as the bot's game status")
-if gametype != '':
+gametype = input("Enter what you wanna set as the bot's game status (Options: PLAYING, WATCHING, LISTENING, STREAMING)")
+if gametype != '' and gametype in ["PLAYING", "WATCHING", "LISTENING", "STREAMING"]:
 	data["status"]["game"]["type"] = gametype
 	json.dump(data, f)
+channel_id = input("Enter your channel's ID here")
+if channel_id != '' and channel_id.isdigit():
+	data["channel id"] = channel_id
+	json.dump(data, f)
+sleep(1)

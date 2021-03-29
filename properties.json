@@ -1,8 +1,6 @@
 {
-	"user" : 0,
 	"emoji" : 0,
 	"token" : 0,
-	"score" : 0,
 	"status" : {
 			"status" : "online",
 			"game" : {

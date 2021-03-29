@@ -1,5 +1,5 @@
 # **CountingPolice**
-A discord bot that takes care of your Counting channel
+A Discord bot that takes care of your Counting channel
 
 ## **Requirements:**
 * Node.js (You can download it [here](https://nodejs.org/en/download/))

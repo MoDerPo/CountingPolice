@@ -13,7 +13,7 @@ with open('properties.json', 'r+') as f:
         if token != '':
                 data["token"] = token
                 #json.dump(data, f)
-        status = input("Enter if your bot's status will be online, idle or Do not disturb here (for Do not disturb enter dnd)")
+'''        status = input("Enter if your bot's status will be online, idle or Do not disturb here (for Do not disturb enter dnd)")
         if status != '' and status in ["online", "idle", "dnd"]:
                 data["status"]["status"] = status
                 #json.dump(data, f)
@@ -24,7 +24,7 @@ with open('properties.json', 'r+') as f:
         gametype = input("Enter what you wanna set as the bot's game status (Options: PLAYING, WATCHING, LISTENING, STREAMING)")
         if gametype != '' and gametype in ["PLAYING", "WATCHING", "LISTENING", "STREAMING"]:
                 data["status"]["game"]["type"] = gametype
-                #json.dump(data, f)
+                #json.dump(data, f)'''
         channel_id = input("Enter your channel's ID here")
         if channel_id != '' and channel_id.isdigit():
                 data["channel id"] = channel_id

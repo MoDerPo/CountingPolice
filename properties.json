@@ -1,12 +1,1 @@
-{
-	"emoji" : 0,
-	"token" : 0,
-	"status" : {
-			"status" : "online",
-			"game" : {
-					"name" : "The numbers",
-					"type" : "WATCHING"
-				}
-		},
-	"channel id" : 0
-}
+{"emoji": ":sad_kek:821784337598513234", "token": "ODE2OTYxNTM1NDAyNDQyNzYy.YECkuA.bZ-J82JvKpoBor0cgRvM36HTSBU", "status": {"status": "idle", "game": {"name": "the number's channel", "type": "WATCHING"}}, "channel id": "824919099237990420"}

@@ -13,17 +13,19 @@
 
     Contact me via discord: Moderpo #0172
 */
+//const obj = JSON.parse(text)
 const package_json = require('./package.json')
 console.log(`Counting Police ${package_json.version} by @Moderpo#0172 initiated`)
 const fs = require(`fs`),
     Discord = require(`discord.js`)
+const jsondata = JSON.parse(fs.readFileSync('properties.json'));
 console.log(`Discord.js and fs Library loaded`)
 const client = new Discord.Client()
 console.log(`client defined.`)
-const emoji = ``
+const emoji = jsondata['emoji']
 /////add your emoji name and id above but keep in mind that throughout the code I use the const "emoji"!/////
 console.log(`Emojis Loaded.`)
-client.login(``)
+client.login(jsondata['token'])
 /////ad your token above/////
 
 //#region Start Bot
@@ -31,10 +33,10 @@ client.once(`ready`, () => {
     console.log(`Logged in as ${client.user.tag}`)
     ////#region Presence
     client.user.setPresence({
-        status: `online`, // Options: online, idle, dnd (do not disturb)
+        status: jsondata['status']['status'], // Options: online, idle, dnd (do not disturb)
         game: {
-            name: `The numbers`, // what the bot is watching, playing, listening or streaming
-            type: `WATCHING` // Options: PLAYING, WATCHING, LISTENING, STREAMING,
+            name: jsondata['status']['game']['name'], // what the bot is watching, playing, listening or streaming
+            type: jsondata['status']['game']['type'] // Options: PLAYING, WATCHING, LISTENING, STREAMING,
         }
         //#endregion
     })
@@ -42,7 +44,8 @@ client.once(`ready`, () => {
 //#endregion
 
 //#region Counting
-const count = ``
+const count = jsondata['channel id']
+console.log(jsondata["token"])
     /////add your counting channel ID above/////
 console.log(`Counting channel:   <#${count}>`)
 
@@ -98,7 +101,7 @@ client.on(`message`, message => {
                             //wrong user
                             console.log(`${message.author.id} is the wrong user.`)
                             message.react(emoji)
-                            message.delete({timeout: 5000}, `Wrong user`)
+                            message.delete({timeout: 1000}, `Wrong user`)
                         } else {console.log(`${id} is not equal to\n${message.author.id}`)
                         console.log(`The number ${num} is correct and by the correct user (<@${message.author.id}>). The last user was ${id}`)
                         fs.writeFile(`score`, num.toString(), (err) => {
@@ -114,13 +117,13 @@ client.on(`message`, message => {
                     //wrong number
                     console.log(`${num} is the wrong number.`)
                     message.react(emoji)
-                    message.delete({timeout: 5000}, `Wrong user`)
+                    message.delete({timeout: 1000}, `Wrong user`)
                 }
             } else {
                 //NaN
                 console.log(`${message.content} does not contain a number`)
                 message.react(emoji)
-                message.delete({timeout: 5000}, `Wrong user`)
+                message.delete({timeout: 1000}, `Wrong user`)
             }
         })
         //outside

@@ -23,10 +23,8 @@ console.log(`Discord.js and fs Library loaded`)
 const client = new Discord.Client()
 console.log(`client defined.`)
 const emoji = jsondata['emoji']
-/////add your emoji name and id above but keep in mind that throughout the code I use the const "emoji"!/////
 console.log(`Emojis Loaded.`)
 client.login(jsondata['token'])
-/////ad your token above/////
 
 //#region Start Bot
 client.once(`ready`, () => {
@@ -46,7 +44,6 @@ client.once(`ready`, () => {
 //#region Counting
 const count = jsondata['channel id']
 console.log(jsondata["token"])
-    /////add your counting channel ID above/////
 console.log(`Counting channel:   <#${count}>`)
 
 /*fs.readFile(`score`, (err, score_buffer) => {

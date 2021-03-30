@@ -32,14 +32,14 @@ client.login(jsondata['token'])
 client.once(`ready`, () => {
     console.log(`Logged in as ${client.user.tag}`)
     ////#region Presence
-    client.user.setPresence({
+/*    client.user.setPresence({
         status: jsondata['status']['status'], // Options: online, idle, dnd (do not disturb)
         game: {
             name: jsondata['status']['game']['name'], // what the bot is watching, playing, listening or streaming
             type: jsondata['status']['game']['type'] // Options: PLAYING, WATCHING, LISTENING, STREAMING,
         }
         //#endregion
-    })
+    })*/
 })
 //#endregion
 
@@ -49,7 +49,7 @@ console.log(jsondata["token"])
     /////add your counting channel ID above/////
 console.log(`Counting channel:   <#${count}>`)
 
-fs.readFile(`score`, (err, score_buffer) => {
+/*fs.readFile(`score`, (err, score_buffer) => {
     if (err) {
         console.error(err)
         return
@@ -62,7 +62,7 @@ fs.readFile(`user`, (err, id_buffer) => {
         return
     }
     console.log(`user: ${id_buffer}`)
-})
+})*/
 
 client.on(`message`, message => {
     if (message.content) {
@@ -78,7 +78,7 @@ client.on(`message`, message => {
                 return
             }
             console.log(`read ${score_buffer} from file "score".`)
-            let score = parseInt(score_buffer, 10)
+            let score = jsondata["score"]
             console.log(`converted the contents of score (${score_buffer}, buffer) to int: ${score}`) 
             console.log(`score: ${score}`)
             console.log(`expected number: ${score+1}`)
@@ -94,7 +94,7 @@ client.on(`message`, message => {
                             return
                         }
                         console.log(`read ${id_buffer} from file "user".`)
-                        let id = parseInt(id_buffer, 10)
+                        let id = jsondata['user']
                         console.log(`converted the contents of user (${id_buffer}, buffer) to int: ${id}`)
                         console.log(`User: <@${message.author.id}>`)
                         if (id == message.author.id) {
@@ -104,7 +104,9 @@ client.on(`message`, message => {
                             message.delete({timeout: 1000}, `Wrong user`)
                         } else {console.log(`${id} is not equal to\n${message.author.id}`)
                         console.log(`The number ${num} is correct and by the correct user (<@${message.author.id}>). The last user was ${id}`)
-                        fs.writeFile(`score`, num.toString(), (err) => {
+						jsondata['score'] = num
+						jsondata['user'] = message.author.id
+                        fs.writeFile(`properties.json`, JSON.stringify(jsondata), (err) => {
                             if (err) throw err
                             console.log(`updated score.`)
                         })

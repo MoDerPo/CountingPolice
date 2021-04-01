@@ -16,6 +16,7 @@
 //const obj = JSON.parse(text)
 const package_json = require('./package.json')
 console.log(`Counting Police ${package_json.version} by @Moderpo#0172 initiated`)
+console.log(`A lot of thanks to @Oakchris1955#3805`)
 const fs = require(`fs`),
     Discord = require(`discord.js`)
 const jsondata = JSON.parse(fs.readFileSync('properties.json'));

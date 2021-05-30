@@ -3,7 +3,7 @@ A Discord bot that takes care of your Counting channel
 
 ## **Requirements:**
 * Node.js (You can download it [here](https://nodejs.org/en/download/))
-* Python (You can download it [here](https://www.python.org/downloads/)
+* Python (You can download it [here](https://www.python.org/downloads/))
 
 ## **Instructions:**
 * ~~Go to main.js and look at the comments with five slashes.~~

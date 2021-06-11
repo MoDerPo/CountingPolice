@@ -14,40 +14,43 @@
     Contact me via discord: Moderpo #0172
 */
 //const obj = JSON.parse(text)
-const package_json = require('./package.json')
-console.log(`Counting Police ${package_json.version} by @Moderpo#0172 initiated`)
-console.log(`A lot of thanks to @Oakchris1955#3805`)
-const fs = require(`fs`),
-    Discord = require(`discord.js`)
-const jsondata = JSON.parse(fs.readFileSync('properties.json'));
-console.log(`Discord.js and fs Library loaded`)
-const client = new Discord.Client()
-console.log(`client defined.`)
-const emoji = jsondata['emoji']
-console.log(`Emojis Loaded.`)
+import json
+with open('package.json') as f:
+	package_json = f.read()
+print('Counting Police {version} by @Moderpo#0172 initiated'.format(version = package_json.version))
+print('A lot of thanks to @Oakchris1955#3805')
+with open('properties.json') as f:
+	jsondata = json.load(f)
+import discord
+console.log('Discord.py and json loaded')
+client = discord.Client()
+print('Client defined.')
+emoji = jsondata['emoji']
+print('Emojis Loaded.')
 client.login(jsondata['token'])
 
-//#region Start Bot
-client.once(`ready`, () => {
-    console.log(`Logged in as ${client.user.tag}`)
-    ////#region Presence
-/*    client.user.setPresence({
+#region Start Bot
+@client.event()
+async def on_ready():
+	print("We've logged in as {name}".format(name = client.user.name)
+    #region Presence
+'''    client.user.setPresence({
         status: jsondata['status']['status'], // Options: online, idle, dnd (do not disturb)
         game: {
             name: jsondata['status']['game']['name'], // what the bot is watching, playing, listening or streaming
             type: jsondata['status']['game']['type'] // Options: PLAYING, WATCHING, LISTENING, STREAMING,
         }
         //#endregion
-    })*/
+    })'''
 })
-//#endregion
+#endregion
 
-//#region Counting
-const count = jsondata['channel id']
-console.log(jsondata["token"])
-console.log(`Counting channel:   <#${count}>`)
+#region Counting
+count = jsondata['channel id']
+print(jsondata["token"])
+print('Counting channel ID:   {count}'.format(count = count))
 
-/*fs.readFile(`score`, (err, score_buffer) => {
+*fs.readFile(`score`, (err, score_buffer) => {
     if (err) {
         console.error(err)
         return

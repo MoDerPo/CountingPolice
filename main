@@ -1,4 +1,4 @@
-/*
+'''
     Copyright (C) 2021  MoDerPo
 
     This program is free software: you can redistribute it and/or modify
@@ -12,8 +12,8 @@
     GNU General Public License in CountingPolice\LICENSE for more details.
 
     Contact me via discord: Moderpo #0172
-*/
-//const obj = JSON.parse(text)
+'''
+#const obj = JSON.parse(text)
 import json
 with open('package.json') as f:
 	package_json = f.read()
@@ -49,30 +49,21 @@ async def on_ready():
 count = jsondata['channel id']
 print(jsondata["token"])
 print('Counting channel ID:   {count}'.format(count = count))
+score = jsondata['score']
+print('Score : {score}'.format(score=score))
+user =  jsondata['user']
+print('User : {user}'.format(user=user))
 
-*fs.readFile(`score`, (err, score_buffer) => {
-    if (err) {
-        console.error(err)
-        return
-    }
-    console.log(`score: ${score_buffer}`)
-})
-fs.readFile(`user`, (err, id_buffer) => {
-    if (err) {
-        console.error(err)
-        return
-    }
-    console.log(`user: ${id_buffer}`)
-})*/
+@client.event()
+async def on_message(message):
+	msg = message.content
+	if msg:
+		print('Message recieved:\n{msg}'.format(msg=msg))
+	else:
+		print("Recieved empty message. That happens when there's an embed. You can go check the message here: {url}.".format(url=message.jump_url))
 
-client.on(`message`, message => {
-    if (message.content) {
-        console.log(`Message recieved:\n"${message.content}"`)
-    } else {
-        console.log(`Recieved empty message. That happens when there's an embed. You can go check the message here: ${message.url}.`)
-    }
-    if (message.channel.id == count) {
-        console.log(`channel: #${message.channel.name}. Reading score...`)
+	if (message.channel.id == count) {
+		print('channel: #${message.channel.name}. Reading score...')
         fs.readFile(`score`, (err, score_buffer) => {
             if (err) {
                 console.error(err)

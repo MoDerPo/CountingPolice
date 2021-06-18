@@ -62,18 +62,15 @@ async def on_message(message):
 	else:
 		print("Recieved empty message. That happens when there's an embed. You can go check the message here: {url}.".format(url=message.jump_url))
 
-	if (message.channel.id == count) {
-		print('channel: #${message.channel.name}. Reading score...')
-        fs.readFile(`score`, (err, score_buffer) => {
-            if (err) {
-                console.error(err)
-                return
-            }
-            console.log(`read ${score_buffer} from file "score".`)
-            let score = jsondata["score"]
-            console.log(`converted the contents of score (${score_buffer}, buffer) to int: ${score}`) 
-            console.log(`score: ${score}`)
-            console.log(`expected number: ${score+1}`)
+	if message.channel.id == count:
+		print('Dhannel: {channel}. Reading score...'.format(channel=message.channel.name))
+	with open('score') as f:
+		score_buffer = f.read()
+	print('Read {score_buffer} from file "score".'.format(score_buffer=score_buffer)
+	local score = jsondata["score"]
+	print('Converted the contents of score ({score_buffer}, buffer) to int: {score}'.format(score_buffer=score_buffer, score=score)) 
+	print('Score: {score}'.format(score=score))
+	print('expected number: {score1}'.format(score1=score+1))
             if (/[^a-zA-Z]/.test(message.content)) {
                 console.log(`${message.content} contains a number.`)
                 let num_string = message.content.replace(/^\D+/g, ``),

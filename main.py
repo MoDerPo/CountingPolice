@@ -71,53 +71,40 @@ async def on_message(message):
 	print('Converted the contents of score ({score_buffer}, buffer) to int: {score}'.format(score_buffer=score_buffer, score=score)) 
 	print('Score: {score}'.format(score=score))
 	print('expected number: {score1}'.format(score1=score+1))
-            if (/[^a-zA-Z]/.test(message.content)) {
-                console.log(`${message.content} contains a number.`)
-                let num_string = message.content.replace(/^\D+/g, ``),
-                    num = parseInt(num_string, 10)
-                if (num == score + 1) { 
-                    //correct number
-                    fs.readFile(`user`, (err, id_buffer) => {
-                        if (err) {
-                            console.error(err)
-                            return
-                        }
-                        console.log(`read ${id_buffer} from file "user".`)
-                        let id = jsondata['user']
-                        console.log(`converted the contents of user (${id_buffer}, buffer) to int: ${id}`)
-                        console.log(`User: <@${message.author.id}>`)
-                        if (id == message.author.id) {
-                            //wrong user
-                            console.log(`${message.author.id} is the wrong user.`)
-                            message.react(emoji)
-                            message.delete({timeout: 1000}, `Wrong user`)
-                        } else {console.log(`${id} is not equal to\n${message.author.id}`)
-                        console.log(`The number ${num} is correct and by the correct user (<@${message.author.id}>). The last user was ${id}`)
-						jsondata['score'] = num
-						jsondata['user'] = message.author.id
-                        fs.writeFile(`properties.json`, JSON.stringify(jsondata), (err) => {
-                            if (err) throw err
-                            console.log(`updated score.`)
-                        })
-                        fs.writeFile(`user`, message.author.id, (err) => {
-                            if (err) throw err
-                            console.log(`updated user id.`)
-                        })}
-                    })
-                } else {
-                    //wrong number
-                    console.log(`${num} is the wrong number.`)
-                    message.react(emoji)
-                    message.delete({timeout: 1000}, `Wrong user`)
-                }
-            } else {
-                //NaN
-                console.log(`${message.content} does not contain a number`)
-                message.react(emoji)
-                message.delete({timeout: 1000}, `Wrong user`)
-            }
-        })
-        //outside
-    } else console.log(`message is outside of the counting channel.`)
-})
-//#endregion
+		if (/[^a-zA-Z]/.test(message.content)) {
+			console.log(`${message.content} contains a number.`)
+			let num_string = message.content.replace(/^\D+/g, ``),
+				num = parseInt(num_string, 10)
+			if (num == score + 1) { 
+				//correct number
+				fs.readFile(`user`, (err, id_buffer) => {
+					if (err) {
+						console.error(err)
+						return
+					}
+					console.log(`read ${id_buffer} from file "user".`)
+					let id = jsondata['user']
+					console.log(`converted the contents of user (${id_buffer}, buffer) to int: ${id}`)
+					console.log(`User: <@${message.author.id}>`)
+					if (id == message.author.id) {
+						//wrong user
+						console.log(`${message.author.id} is the wrong user.`)
+						message.react(emoji)
+						message.delete({timeout: 1000}, `Wrong user`)
+					} else {console.log(`${id} is not equal to\n${message.author.id}`)
+					console.log(`The number ${num} is correct and by the correct user (<@${message.author.id}>). The last user was ${id}`)
+					jsondata['score'] = num
+					jsondata['user'] = message.author.id
+					fs.writeFile(`properties.json`, JSON.stringify(jsondata), (err) => {
+						if (err) throw err
+						console.log(`updated score.`)
+					})
+					fs.writeFile(`user`, message.author.id, (err) => {
+						if (err) throw err
+						console.log(`updated user id.`)
+					})}
+				})
+			} else {
+				//wrong number
+				console.log(`${num} is the wrong number.`)
+				message.react(emoji)

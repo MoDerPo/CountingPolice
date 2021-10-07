@@ -1,4 +1,4 @@
-# **Counting Police**
+# **Counting Police** (Note: This branch is archived)
 A Discord bot that takes care of your Counting channel
 
 ## **Requirements:**
